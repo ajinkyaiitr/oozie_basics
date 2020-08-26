@@ -1,0 +1,38 @@
+Step1:
+
+Copy oozie examples to your home directory in web console: cp /usr/hdp/current/oozie-client/doc/oozie-examples.tar.gz ./
+Extract files from tar tar -zxvf oozie-examples.tar.gz
+Edit examples/apps/map-reduce/job.properties and set: nameNode=hdfs://10.142.1.1:8020 jobTracker=10.142.1.2:8050 queueName=default examplesRoot=examples
+Copy the examples directory to HDFS hadoop fs -copyFromLocal examples
+Run the job oozie job -oozie http://10.142.1.2:11000/oozie -config examples/apps/map-reduce/job.properties -run
+Check the job status for the job_id printed in previous step oozie job -oozie http://10.142.1.2:11000/oozie -info job_id
+
+Oozie - Example
+1. Login to Web Console
+2. Copy oozie example
+/usr/hdp/current/oozie-client/doc/oozie-examples.tar.gz to your home directory in web console
+3. Extract files from tar
+tar -zxvf oozie-examples.tar.gz
+4. Edit examples/apps/map-reduce/job.properties and set:
+nameNode=hdfs://ip-172-31-53-48.ec2.internal:8020
+jobTracker=ip-172-31-53-48.ec2.internal:8050
+queueName=default
+examplesRoot=examples
+Oozie
+Oozie - Example - Continued
+4. Copy the examples directory to HDFS
+hadoop fs -copyFromLocal examples
+5. Run the job
+oozie job -oozie http://ip-172-31-13-154.ec2.internal:11000/oozie -config
+examples/apps/map-reduce/job.properties -run
+6. Check the job status
+oozie job -oozie http://ip-172-31-13-154.ec2.internal:11000/oozie -info
+job_id
+Oozie
+Oozie - Example - Using Hue
+Running Sqoop import using Oozie Workflow in Hue
+import --connect jdbc:mysql://ip-172-31-13-154:3306/sqoopex --username
+sqoopuser --password NHkkP876rp --table widgets --target-dir
+hdfs:///user/abhinav9884/widgets_import
+
+
